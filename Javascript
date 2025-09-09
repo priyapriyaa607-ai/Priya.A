@@ -1,0 +1,38 @@
+// Add event listener to navigation links
+document.querySelectorAll('header nav a').forEach((link) => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href');
+        document.querySelector(targetId).scrollIntoView({ behavior: 'smooth' });
+    });
+});
+
+// Add animation to project grid
+const projectGrid = document.querySelector('.project-grid');
+projectGrid.addEventListener('mouseover', (e) => {
+    if (e.target.classList.contains('project')) {
+        e.target.style.transform = 'scale(1.05)';
+        e.target.style.transition = 'transform 0.3s ease-in-out';
+    }
+});
+projectGrid.addEventListener('mouseout', (e) => {
+    if (e.target.classList.contains('project')) {
+        e.target.style.transform = 'scale(1)';
+    }
+});
+
+// Form validation
+const form = document.querySelector('form');
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
+
+    if (name && email && message) {
+        alert('Thank you for your message!');
+        form.reset();
+    } else {
+        alert('Please fill out all fields.');
+    }
+});u
